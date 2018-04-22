@@ -2,10 +2,11 @@ import * as fs from "fs";
 import * as util from "util";
 
 const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
 class Contact {
     constructor(obj){
-        console.log("New Contact");
+        // console.log("New Contact");
 
         this.name = obj.name;
         this.phone = obj.phone;
@@ -32,6 +33,13 @@ class ContactList{
                 contact));
             
         })
+    }
+
+    save(){
+        return writeFile(
+            this.filename,
+        JSON.stringify(this.list),
+    "utf8")
     }
 };
 
