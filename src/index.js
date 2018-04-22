@@ -1,5 +1,18 @@
-import { hello, helloWorld } from './lib/my_functions';
+import { Contact, ContactList } from './ContactList';
 
-console.log("try to add a breakpoint here");
-helloWorld();
-hello("marco");
+let mohamed = new Contact({
+    name: "Mohamed"
+});
+
+
+// console.log(mohamed);
+
+let contacts = new ContactList("./src/contacts.json");
+
+contacts.load()
+.then(()=>{
+    contacts.addContact(mohamed);
+    console.log(contacts);
+    
+})
+// console.log(contacts);
